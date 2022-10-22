@@ -1,5 +1,5 @@
-import { Button } from '@selva/core';
-import { useIsomorphicLayoutEffect } from '@selva/utils';
+import { Button } from '@franklinjavier/selva-core';
+import { useIsomorphicLayoutEffect } from '@franklinjavier/selva-utils';
 
 export default function Docs() {
   useIsomorphicLayoutEffect(() => {

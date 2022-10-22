@@ -1,5 +1,5 @@
 {
-  "name": "@selva/utils",
+  "name": "@franklinjavier/selva-utils",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -16,7 +16,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@selva/tsconfig": "*",
+    "@franklinjavier/selva-tsconfig": "*",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
     "eslint": "^7.32.0",
