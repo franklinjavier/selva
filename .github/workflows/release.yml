@@ -53,7 +53,7 @@ jobs:
         run: yarn build
 
       - name: Publish
-        if: github.event.pull_request.merged
+        if: github.ref == 'refs/heads/main'
         run: yarn release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
