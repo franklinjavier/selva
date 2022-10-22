@@ -10,10 +10,8 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "changeset": "changeset",
     "version-packages": "changeset version",
-    "release-please": "turbo run build --filter=docs^... && yarn changeset && yarn changeset publish",
-    "release": "turbo run build --filter=docs^... && changeset publish"
+    "release": "turbo run build --filter=docs^... && yarn version-packages && npx changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.25.0",

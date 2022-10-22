@@ -7,15 +7,22 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    env:
+      GH_REF: ${{ (github.event.pull_request.merged && github.base_ref) || github.ref }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
         with:
+          ref: ${{ env.GH_REF }}
+          token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
 
       - uses: actions/setup-node@v2
@@ -24,25 +31,26 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: '@franklinjavier'
 
-      - uses: actions/cache@v2
-        id: cache-build
-        with:
-          path: ./*
-          key: ${{ github.sha }}
-
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - run: yarn install --frozen-lockfile --check-files
-
-      - run: yarn release-please
-
-      - uses: google-github-actions/release-please-action@v3
+      - name: Turbo Cache
+        id: turbo-cache
+        uses: actions/cache@v3.0.1
         with:
-          release-type: node
-          package-name: release-please-action
+          path: .turbo
+          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ steps.get-week.outputs.WEEK }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ github.job }}-
+            turbo-${{ github.job }}-${{ github.ref_name }}-${{ steps.get-week.outputs.WEEK }}-
+            turbo-${{ github.job }}-canary-${{ steps.get-week.outputs.WEEK }}-
+
+      - name: Build Packages
+        run: yarn build
+
+      - name: Publish
+        if: github.event.pull_request.merged
+        run: yarn release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
