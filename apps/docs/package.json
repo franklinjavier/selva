@@ -1,6 +1,6 @@
 {
   "name": "@franklinjavier/selva-docs",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -12,7 +12,7 @@
   "dependencies": {
     "@franklinjavier/selva-core": "*",
     "@franklinjavier/selva-utils": "*",
-    "next": "^12.0.8",
+    "next": "^12.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -22,6 +22,6 @@
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@franklinjavier/eslint-config-selva": "*",
-    "typescript": "^4.5.4"
+    "typescript": "^4.8.4"
   }
 }
