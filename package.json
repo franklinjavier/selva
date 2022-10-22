@@ -1,4 +1,5 @@
 {
+  "name": "@franklinjavier/selva",
   "private": true,
   "workspaces": [
     "packages/*",
