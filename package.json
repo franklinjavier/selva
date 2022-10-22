@@ -5,13 +5,12 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build:local": "turbo run build",
     "dev": "turbo run dev --no-cache --parallel --continue",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "version-packages": "changeset version",
-    "release": "turbo run build --filter=docs^... && yarn version-packages && npx changeset publish"
+    "build": "turbo run build --filter=docs^..."
   },
   "devDependencies": {
     "@changesets/cli": "^2.25.0",
