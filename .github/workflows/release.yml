@@ -35,6 +35,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
       - name: Turbo Cache
         id: turbo-cache
         uses: actions/cache@v3.0.1
