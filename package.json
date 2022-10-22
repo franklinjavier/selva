@@ -17,7 +17,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.25.0",
     "eslint": "^8.26.0",
-    "eslint-config-selva": "*",
+    "@franklinjavier/eslint-config-selva": "*",
     "prettier": "^2.7.1",
     "turbo": "^1.6.1"
   }
