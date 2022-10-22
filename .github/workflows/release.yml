@@ -17,12 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_REF: ${{ (github.event.pull_request.merged && github.base_ref) || github.ref }}
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v2
         with:
           ref: ${{ env.GH_REF }}
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.NPM_TOKEN }}
           fetch-depth: 0
 
       - uses: actions/setup-node@v2
