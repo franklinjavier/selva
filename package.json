@@ -12,7 +12,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "shipit": "turbo run build --filter=docs^... && yarn version-packages && changeset publish"
+    "release-please": "turbo run build --filter=docs^...",
+    "release": "turbo run build --filter=docs^... && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.25.0",

@@ -12,31 +12,25 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js 16.x
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: 16.x
           registry-url: https://npm.pkg.github.com
           scope: '@franklinjavier'
-
-      - name: Install Dependencies
-        run: yarn
-
-      - name: Set up GitHub User
-        run: |
+      - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Release
-        id: changesets
-        uses: changesets/action@v1
+      - run: yarn
+      - run: yarn release-please
+      - uses: google-github-actions/release-please-action@v3
         with:
-          publish: yarn shipit
+          release-type: node
+          package-name: release-please-action
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
