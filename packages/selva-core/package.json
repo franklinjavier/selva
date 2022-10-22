@@ -1,6 +1,6 @@
 {
   "name": "@franklinjavier/selva-core",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -24,8 +24,5 @@
     "react": "^17.0.2",
     "tsup": "^5.10.1",
     "typescript": "^4.5.3"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
