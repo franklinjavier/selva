@@ -1,4 +1,4 @@
-name: Build, Test and Publish
+name: Build, Lint and Publish
 
 on:
   push:
@@ -10,7 +10,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   build:
-    name: Build
+    name: CI
     runs-on: ubuntu-latest
     steps:
       - name: Set up GitHub Checkout
@@ -60,12 +60,10 @@ jobs:
         uses: changesets/action@v1
         with:
           version: yarn changeset version
-          commit: 'chore(release): publish 🚀'
-          title: 'chore(release): publish 🚀'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          commit: 'release: publish 🚀'
+          title: 'release: publish 🚀'
 
-      - name: Release
+      - name: Publish
         if: steps.changesets.outputs.hasChangesets == 'false'
         uses: changesets/action@v1
         with:
