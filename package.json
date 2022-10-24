@@ -1,8 +1,6 @@
 {
   "name": "@franklinjavier/selva",
-  "repository": {
-    "url": "https://github.com/franklinjavier/selva.git"
-  },
+  "private": true,
   "workspaces": [
     "packages/*",
     "apps/*"
