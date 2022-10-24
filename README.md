@@ -1,6 +1,6 @@
 # selva
 
-[![Build, Test and Publish](https://github.com/franklinjavier/selva/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/franklinjavier/selva/actions/workflows/release.yml)
+[![Build, Test and Publish](https://github.com/franklinjavier/selva/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/franklinjavier/selva/actions/workflows/ci.yml)
 
 ## Como contribuir
 
